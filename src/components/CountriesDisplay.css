@@ -1,0 +1,31 @@
+.countries-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.countries-display p {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.countries-display p:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.countries-display img {
+  width: 16px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.countries-display p span {
+  font-weight: bold;
+}
+
+.country-name {
+  font-weight: bold;
+}
