@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Search from "./components/Search";
 import CountriesDisplay from "./components/CountriesDisplay";
+import Country from "./components/Country";
 import axios from "axios";
-import "./App.css"; // Import CSS file for App.js styling
+import "./App.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -20,7 +21,7 @@ function App() {
   }, []);
 
   const filteredCountries = countries.filter((country) => {
-    const searchInput = search.toLowerCase().trim();
+    const searchInput = search.toLowerCase().trim(); // Trim the search input
     return country.name.common.toLowerCase().includes(searchInput);
   });
 
@@ -29,6 +30,9 @@ function App() {
       <h1>Countries Info</h1>
       <Search search={search} handleSearch={handleSearch} />
       <CountriesDisplay filteredCountries={filteredCountries} />
+      {filteredCountries.length === 1 && (
+        <Country country={filteredCountries[0]} />
+      )}
     </div>
   );
 }
