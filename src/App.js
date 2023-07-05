@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
+  const [filteredCountry, setFilteredCountry] = useState(null);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -25,11 +26,18 @@ function App() {
     return country.name.common.toLowerCase().includes(searchInput);
   });
 
+  const handleCountryClick = (countryName) => {
+    setSearch(countryName);
+  };
+
   return (
     <div className="App">
       <h1>Countries Info</h1>
       <Search search={search} handleSearch={handleSearch} />
-      <CountriesDisplay filteredCountries={filteredCountries} />
+      <CountriesDisplay
+        filteredCountries={filteredCountries}
+        onCountryClick={handleCountryClick}
+      />
       {filteredCountries.length === 1 && (
         <Country country={filteredCountries[0]} />
       )}
