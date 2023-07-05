@@ -8,7 +8,6 @@ import "./App.css";
 function App() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
-  const [filteredCountry, setFilteredCountry] = useState(null);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -30,10 +29,18 @@ function App() {
     setSearch(countryName);
   };
 
+  const clearSearch = () => {
+    setSearch("");
+  };
+
   return (
     <div className="App">
       <h1>Countries Info</h1>
-      <Search search={search} handleSearch={handleSearch} />
+      <Search
+        search={search}
+        handleSearch={handleSearch}
+        clearSearch={clearSearch}
+      />
       <CountriesDisplay
         filteredCountries={filteredCountries}
         onCountryClick={handleCountryClick}
